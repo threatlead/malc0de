@@ -1,19 +1,40 @@
-from setuptools import setup, find_packages
+import io
+import os
+import re
 
-with open('README.md') as f:
-    readme = f.read()
+from setuptools import find_packages
+from setuptools import setup
 
-with open('LICENSE') as f:
-    license = f.read()
+
+def read(filename):
+    filename = os.path.join(os.path.dirname(__file__), filename)
+    text_type = type(u"")
+    with io.open(filename, mode="r", encoding='utf-8') as fd:
+        return re.sub(text_type(r':[a-z]+:`~?(.*?)`'), text_type(r'``\1``'), fd.read())
+
 
 setup(
-    name='malc0de',
-    version='0.1',
-    description='Malc0de Module',
-    long_description=readme,
-    author='threatlead',
-    author_email='threatlead@gmail.com',
-    url='https://github.com/threatlead/',
-    license=license,
-    packages=find_packages(exclude=('tests',))
+    name="malc0de",
+    version="0.1.0",
+    url="https://github.com/threatlead/malc0de",
+    license='MIT',
+
+    author="Threat Lead",
+    author_email="threatlead@gmail.com",
+
+    description="Malc0de Feed Scraper Module",
+    long_description=read("README.md"),
+
+    packages=find_packages(exclude=('tests',)),
+
+    install_requires=['feedparser'],
+
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+    ],
 )

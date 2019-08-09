@@ -1,20 +1,36 @@
-# ![Malcode](https://s13.postimg.org/mex3nuox3/debug.png) Malc0de RSS Feed
+
+# ![Malcode](logo.png) Malc0de RSS Feed Parser
 
 ## Usage
+### Import library
 
-### Feed Parser
 
 ```python
 import malc0de
-print(malc0de.Malcode.get_rss_items()[:5])
 ```
 
-```javascript
-[
-    Malcode(domain='www.motoclubfojeteiros.com', url='www.motoclubfojeteiros.com/wp-content/aeHwbX/index.html', ipaddress='82.165.134.81', country='DE', asn='8560', md5sum='c1e58deff777f2fdb48a50a42618f599'),
-    Malcode(domain='www.kickassgrowth.com', url='www.kickassgrowth.com/LjzmE/index.html', ipaddress='46.4.90.232', country='DE', asn='24940', md5sum='8ea76c5c4f2c268eecf02e3604a4f7a6'),
-    Malcode(domain='umunna.info', url='umunna.info/bestfile/builder.exe', ipaddress='37.72.171.98', country='PL', asn='35017', md5sum='71169e2bb6e19b3c3edcd7d8f3d6d3f1'),
-    Malcode(domain='umunna.info', url='umunna.info/bestfile/Loki_original.exe', ipaddress='37.72.171.98', country='PL', asn='35017', md5sum='5455364b437d431400267a9092d65442'),
-    Malcode(domain='ow.ly', url='ow.ly/32nP30h187Z', ipaddress='54.183.130.144', country='US', asn='16509', md5sum='6c29b80a61ff5ca7f5d8db8b002e9631')
-]
+### Get latest entries
+
+
+```python
+entries = Malcode.get_rss_items()
 ```
+
+### Access entry data
+
+
+```python
+for entry in entries[0:5]:
+    print('Domain:{0} \t MD5:{1} \t URL={2}'.format(entry.domain, entry.md5sum, entry.url))
+```
+
+    Domain:gcleaner.info 	 MD5:b0305d1ad459a94506d7b857af0a80bb 	 URL=gcleaner.info/setup.exe
+    Domain:gcleaner.info 	 MD5:9c896e35007cc63ba400ef1e964cd571 	 URL=gcleaner.info/success.reg
+    Domain:gcleaner.info 	 MD5:751675a571dd42a5f2f879a3612b885c 	 URL=gcleaner.info/koseu.exe
+    Domain:faqshub.xyz 	 MD5:dd9866000a55f0794a551603d90c83d9 	 URL=faqshub.xyz/wp/mexzy/mexzy.exe
+    Domain:faqshub.xyz 	 MD5:c623c38a0f89211ff438d3249bddab97 	 URL=faqshub.xyz/wp/clunny/clunny.exe
+
+
+# Misc
+
+- [MIT License](LICENSE)
